@@ -19,14 +19,14 @@ if (isset($_POST['login'])) {
             exit();
         }
     } else {
-        header("Location:signin.php?err_msg= فیلد ها ایمیل و پسورد الزامی هست");
+        header("Location:signin.php?err_msg= Email and password fields are required");
         exit();
     }
 }
 
 ?>
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -52,19 +52,19 @@ if (isset($_POST['login'])) {
                 <?php
                 }
                 ?>
-                <h3 class="text-white text-center pt-3">ورود</h2>
+                <h3 class="text-white text-center pt-3"> Log in </h2>
                     <div class="card-body" style="width: 400px">
                         <form method="post">
                             <div class="form-group">
-                                <label class="text-white" for="email">ایمیل</label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="ایمیل خود را وارد کنید.">
+                                <label class="text-white" for="email"> Email </label>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email.">
                             </div>
                             <div class="form-group">
-                                <label class="text-white" for="password">رمز عبور</label>
-                                <input type="password" class="form-control" name="password" id="password" placeholder="پسورد خود را وارد کنید.">
+                                <label class="text-white" for="password"> Password </label>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password">
                             </div>
 
-                            <button type="submit" name="login" class="btn btn-outline-primary btn-block">ورود</button>
+                            <button type="submit" name="login" class="btn btn-outline-primary btn-block"> Log in</button>
                         </form>
                     </div>
 

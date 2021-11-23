@@ -26,7 +26,7 @@ if ( isset($_POST['add_post']) ) {
         header("Location:post.php");
         exit();
     } else {
-        header("Location:new_post.php?err_msg= تمام فیلد ها الزامی هست");
+        header("Location:new_post.php?err_msg= All fields are required");
         exit();
     }
 }
@@ -40,7 +40,7 @@ if ( isset($_POST['add_post']) ) {
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
             <div class="d-flex justify-content-between mt-5">
-                <h3>ایجاد مقاله</h3>
+                <h3> Create an article </h3>
             </div>
 
             <hr>
@@ -55,17 +55,17 @@ if ( isset($_POST['add_post']) ) {
             ?>
             <form method="post" class="mb-5" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="category">عنوان : </label>
+                    <label for="category"> Title : </label>
                     <input type="text" class="form-control" name="title" id="title">
-                    <small class="form-text text-muted">نام مقاله را وارد کنید.</small>
+                    <small class="form-text text-muted">Enter the name of the article.</small>
                 </div>
                 <div class="form-group">
-                    <label for="author">نویسنده : </label>
+                    <label for="author"> Author : </label>
                     <input type="text" class="form-control" name="author" id="author">
-                    <small class="form-text text-muted">نام نویسنده را وارد کنید.</small>
+                    <small class="form-text text-muted">Enter the name of the Author.</small>
                 </div>
                 <div class="form-group">
-                    <label for="category_id">دسته بندی : </label>
+                    <label for="category_id"> Categories : </label>
                     <select class="form-control" name="category_id" id="category_id">
                         <?php
                         if ($categories->rowCount() > 0) {
@@ -80,18 +80,18 @@ if ( isset($_POST['add_post']) ) {
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="category">متن مقاله : </label>
+                    <label for="category"> Article text : </label>
                     <textarea class="form-control" name="body" id="body" rows="3"></textarea>
-                    <small class="form-text text-muted">متن مقاله را وارد کنید.</small>
+                    <small class="form-text text-muted"> Enter the text of the article..</small>
                 </div>
 
                 <div class="form-group">
-                    <label for="author">تصویر : </label>
+                    <label for="author"> Image : </label>
                     <input type="file" class="form-control" name="image" id="image">
-                    <small class="form-text text-muted">تصویر مقاله را وارد کنید.</small>
+                    <small class="form-text text-muted"> Enter the image of the article.</small>
                 </div>
 
-                <button type="submit" name="add_post" class="btn btn-outline-primary">ایجاد</button>
+                <button type="submit" name="add_post" class="btn btn-outline-primary"> Create </button>
             </form>
 
         </main>

@@ -26,8 +26,8 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
             <div class="d-flex justify-content-between mt-5">
-                <h3>مقالات</h3>
-                <a href="new_post.php" class="btn btn-outline-primary">ایجاد مقاله</a>
+                <h3> Articles </h3>
+                <a href="new_post.php" class="btn btn-outline-primary"> Create an article </a>
             </div>
 
             <div class="table-responsive">
@@ -36,10 +36,10 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>عنوان</th>
-                                <th>نویسنده</th>
-                                <th>دسته بندی</th>
-                                <th>تنظیمات</th>
+                                <th> Title </th>
+                                <th> Author </th>
+                                <th> Categories </th>
+                                <th> Settings </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,8 +58,8 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                         <td><?php echo $post['author'] ?></td>
                                         <td><?php echo $post_category['title'] ?></td>
                                         <td>
-                                            <a href="edit_post.php?id=<?php echo $post['id'] ?>" class=" btn btn-outline-info">ویرایش</a>
-                                            <a href="post.php?action=delete&id=<?php echo $post['id'] ?>" class=" btn btn-outline-danger">حذف</a>
+                                            <a href="edit_post.php?id=<?php echo $post['id'] ?>" class=" btn btn-outline-info"> Edit </a>
+                                            <a href="post.php?action=delete&id=<?php echo $post['id'] ?>" class=" btn btn-outline-danger"> Delete </a>
                                         </td>
                                     </tr>
                             <?php

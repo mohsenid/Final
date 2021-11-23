@@ -4,13 +4,13 @@ include("./include/config.php");
 include("./include/db.php");
 
 if ( ! isset($_SESSION['email'])) {
-    header("Location:signin.php?err_msg=شما در ابتدا باید وارد سیستم شوید");
+    header("Location:signin.php?err_msg=You must be logged in first");
     exit();
 }
 
 ?>
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -25,11 +25,11 @@ if ( ! isset($_SESSION['email'])) {
 
 <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.php">WebProg.ir</a>
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.php"> Myblog.com </a>
 
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
-                <a class="nav-link" href="logout.php">خروج</a>
+                <a class="nav-link" href="logout.php"> Exit </a>
             </li>
         </ul>
     </nav>

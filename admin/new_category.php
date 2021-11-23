@@ -12,7 +12,7 @@ if (isset($_POST['add_category'])) {
         header("Location:category.php");
         exit();
     } else {
-        header("Location:new_category.php?&err_msg=فیلد عنوان الزامی هست");
+        header("Location:new_category.php?&err_msg=The title field is required");
         exit();
     }
 }
@@ -27,7 +27,7 @@ if (isset($_POST['add_category'])) {
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
             <div class="d-flex justify-content-between mt-5">
-                <h3>ایجاد دسته</h3>
+                <h3> Create category </h3>
             </div>
             <hr>
             <?php
@@ -41,12 +41,12 @@ if (isset($_POST['add_category'])) {
             ?>
             <form method="post">
                 <div class="form-group">
-                    <label for="category">عنوان : </label>
+                    <label for="category"> Title : </label>
                     <input type="text" class="form-control" name="title" id="title">
-                    <small class="form-text text-muted">نام دسته را وارد کنید.</small>
+                    <small class="form-text text-muted"> Enter the category name.</small>
                 </div>
 
-                <button type="submit" name="add_category" class="btn btn-outline-primary">ایجاد</button>
+                <button type="submit" name="add_category" class="btn btn-outline-primary"> Create </button>
             </form>
 
         </main>

@@ -42,18 +42,18 @@ $categories = $db->query($query_categories);
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">داشبورد</h1>
+                <h1 class="h2"> Dashboard </h1>
             </div>
 
-            <h3>مقالات اخیر</h3>
+            <h3> Recent Articles </h3>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>عنوان</th>
-                            <th>نویسنده</th>
-                            <th>تنظیمات</th>
+                            <th> Title </th>
+                            <th> Author </th>
+                            <th> Settings </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,8 +67,8 @@ $categories = $db->query($query_categories);
                                     <td> <?php echo $post['author'] ?> </td>
 
                                     <td>
-                                        <a href="edit_post.php?id=<?php echo $post['id'] ?>" class="btn btn-outline-info">ویرایش</a>
-                                        <a href="index.php?entity=post&action=delete&id=<?php echo $post['id'] ?>" class="btn btn-outline-danger">حذف</a>
+                                        <a href="edit_post.php?id=<?php echo $post['id'] ?>" class="btn btn-outline-info"> Edit </a>
+                                        <a href="index.php?entity=post&action=delete&id=<?php echo $post['id'] ?>" class="btn btn-outline-danger"> Delete </a>
                                     </td>
                                 </tr>
                             <?php
@@ -76,7 +76,7 @@ $categories = $db->query($query_categories);
                             } else {
                                 ?>
                             <div class="alert alert-danger" role="alert">
-                                مقاله برای نمایش وجود ندارد!!!
+                                There is no article to display !!!
                             </div>
                         <?php
                         }
@@ -86,15 +86,15 @@ $categories = $db->query($query_categories);
                 </table>
             </div>
 
-            <h3>کامنت های اخیر</h3>
+            <h3> Recent Comments </h3>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>نام</th>
-                            <th>کامنت</th>
-                            <th>تنظیمات</th>
+                            <th> Name </th>
+                            <th> Comment </th>
+                            <th> Settings </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -108,8 +108,8 @@ $categories = $db->query($query_categories);
                                     <td> <?php echo $comment['comment'] ?> </td>
 
                                     <td>
-                                        <a href="index.php?entity=comment&action=approve&id=<?php echo $comment['id'] ?>" class="btn btn-outline-success">تایید</a>
-                                        <a href="index.php?entity=comment&action=delete&id=<?php echo $comment['id'] ?>" class="btn btn-outline-danger">حذف</a>
+                                        <a href="index.php?entity=comment&action=approve&id=<?php echo $comment['id'] ?>" class="btn btn-outline-success"> Confirm </a>
+                                        <a href="index.php?entity=comment&action=delete&id=<?php echo $comment['id'] ?>" class="btn btn-outline-danger"> Delete </a>
                                     </td>
                                 </tr>
                             <?php
@@ -117,7 +117,7 @@ $categories = $db->query($query_categories);
                             } else {
                                 ?>
                             <div class="alert alert-danger" role="alert">
-                                کامنتی برای نمایش وجود ندارد!!!
+                                There are no comments to display !!!
                             </div>
                         <?php
                         }
@@ -127,14 +127,14 @@ $categories = $db->query($query_categories);
                 </table>
             </div>
 
-            <h3>دسته بندی ها</h3>
+            <h3> Categories </h3>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>عنوان</th>
-                            <th>تنظیمات</th>
+                            <th> Title </th>
+                            <th> Settings </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -146,8 +146,8 @@ $categories = $db->query($query_categories);
                                     <td> <?php echo $category['id'] ?> </td>
                                     <td> <?php echo $category['title'] ?> </td>
                                     <td>
-                                        <a href="edit_category.php?id=<?php echo $category['id'] ?>" class="btn btn-outline-info">ویرایش</a>
-                                        <a href="index.php?entity=category&action=delete&id=<?php echo $category['id'] ?>" class="btn btn-outline-danger">حذف</a>
+                                        <a href="edit_category.php?id=<?php echo $category['id'] ?>" class="btn btn-outline-info"> Edit </a>
+                                        <a href="index.php?entity=category&action=delete&id=<?php echo $category['id'] ?>" class="btn btn-outline-danger"> Delete </a>
                                     </td>
                                 </tr>
                             <?php
@@ -155,7 +155,7 @@ $categories = $db->query($query_categories);
                             } else {
                                 ?>
                             <div class="alert alert-danger" role="alert">
-                                دسته ای برای نمایش وجود ندارد!!!
+                                There is no category to display !!!
                             </div>
                         <?php
                         }

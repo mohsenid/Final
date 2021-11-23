@@ -60,7 +60,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                             <?php
                                                 if ($comment['status']) {
                                                     ?>
-                                                <a href="#" class="btn btn-outline-success"> Confirmation </a>
+                                                <a href="#" class="btn btn-outline-success">  Confirmed </a>
                                             <?php
                                                 } else {
                                                     ?>
