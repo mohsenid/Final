@@ -3,28 +3,38 @@ session_start();
 include("./include/config.php");
 include("./include/db.php");
 
-if (isset($_POST['login'])) {
-    
-    if (trim($_POST['email']) != "" || trim($_POST['password']) != "") {
-
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        $user_select = $db->prepare("SELECT * FROM users WHERE email=:email AND password=:password ");
-        $user_select->execute(['email' => $email, 'password' => $password]);
-
-        if ($user_select->rowCount() == 1) {
-            $_SESSION['email'] = $email;
-            header("Location:index.php");
-            exit();
-        }
+if(isset($_POST["login"])){
+    $email = htmlspecialchars($_POST["email"]);
+    $mdp = htmlspecialchars($_POST["password"]);
+  
+    if(!empty($email) && !empty($mdp)){
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+          $select = $db -> prepare("SELECT * FROM users WHERE email = ?");
+          $select -> execute([$email]);
+  
+          $result = $select -> fetch();
+          //بخاطر اینکه جواب صحیح یه ارایه هست و فقط صحیح نیست از فالس استفاده میکنیم
+          if($result !== false){
+  
+            $mdpBdd = $result["password"];
+            // بصورت پیشفرض جواب شرط صحیح هس
+            if(password_verify($mdp, $mdpBdd)){
+              $_SESSION["email"] = $result["email"];
+              header("Location: index.php");
+              exit();
     } else {
         header("Location:signin.php?err_msg= Email and password fields are required");
         exit();
     }
 }
 
+}
+}
+}
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +45,7 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <link rel="stylesheet" href="./css/admin.css" />
 
-    <title>Blog WebProg-Login</title>
+    <title>MyBlog Login</title>
 </head>
 
 <body>

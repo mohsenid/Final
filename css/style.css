@@ -14,5 +14,74 @@ body {
   font-family: "Vazir" !important;
   line-height: 1.6;
 }
+nav a img{
+  width: 2em;
+  border-radius: 50%;
+  border: 1Px white solid;
+}
+.link{
+  color: white;
+  margin-right: 1rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+/* ----------------------FORM------------------------------ */
+@import "bourbon";
+
+body {
+	background: #eee !important;	
+}
+
+.wrapper {	
+	margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.form-signin {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+}  
+
+  .form-signin-heading{
+	  margin-bottom: 30px;
+	}
+
+
+
+	.form-control {
+	  position: relative;
+	  font-size: 16px;
+	  height: auto;
+	  padding: 10px;
+		
+	}
+
+	input[type="text"] {
+	  margin-bottom: -1px;
+	  border-bottom-left-radius: 0;
+	  border-bottom-right-radius: 0;
+	}
+
+	input[type="password"],input[type='passwordConfirm'] {
+	  margin-bottom: 0px;
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+	}
+  button[type='submit']{
+    margin: 20px;
+    text-align: center;
+  }
+
+  /* -----------------FOOTER------------------- */
+  /* footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+  } */
+
 
 
