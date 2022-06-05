@@ -13,11 +13,9 @@ if(isset($_POST["login"])){
           $select -> execute([$email]);
   
           $result = $select -> fetch();
-          //بخاطر اینکه جواب صحیح یه ارایه هست و فقط صحیح نیست از فالس استفاده میکنیم
           if($result !== false){
   
             $mdpBdd = $result["password"];
-            // بصورت پیشفرض جواب شرط صحیح هس
             if(password_verify($mdp, $mdpBdd)){
               $_SESSION["email"] = $result["email"];
               header("Location: index.php");

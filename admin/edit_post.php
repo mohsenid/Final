@@ -34,6 +34,7 @@ if (isset($_POST['edit_post'])) {
           $post_update = $db->prepare("UPDATE posts SET title =:title, author=:author, category_id=:category_id, body=:body, image=:image WHERE id=:id");
           $post_update->execute(['title' => $title, 'author' => $author, 'category_id' => $category_id, 'body' => $body, 'image' => $name_image, 'id' => $post_id]);
 
+          // En cas de déchangement d'image 
         }else{
 
           $post_update = $db->prepare("UPDATE posts SET title =:title, author=:author, category_id=:category_id, body=:body WHERE id=:id");
