@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 11, 2019 at 08:26 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Host: localhost:3306
+-- Generation Time: Jun 04, 2022 at 07:46 PM
+-- Server version: 5.7.24
+-- PHP Version: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `blog_webprog`
+-- Database: `myblog`
 --
 
 -- --------------------------------------------------------
@@ -30,17 +30,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
-  `title` varchar(100) COLLATE utf8_persian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+  `title` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `title`) VALUES
-(1, 'دسته 1'),
-(2, 'دسته 2'),
-(3, 'دسته 3');
+(1, 'Catégorie 1'),
+(2, 'Catégorie 2'),
+(3, 'Catégorie 3');
 
 -- --------------------------------------------------------
 
@@ -50,24 +50,25 @@ INSERT INTO `categories` (`id`, `title`) VALUES
 
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) COLLATE utf8_persian_ci NOT NULL,
-  `comment` text COLLATE utf8_persian_ci NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `comment` text NOT NULL,
   `post_id` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+  `status` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `comments`
 --
 
 INSERT INTO `comments` (`id`, `name`, `comment`, `post_id`, `status`) VALUES
-(1, 'علی', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. ', 1, 0),
-(2, 'محمد', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. ', 1, 1),
-(3, 'نیما', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. ', 1, 0),
-(4, 'نوید', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. ', 3, 1),
-(5, 'صادق', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. ', 1, 0),
-(6, 'عباس', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. ', 1, 1),
-(7, 'علی', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. ', 1, 1);
+(1, 'Daniel', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ipsum faucibus, sollicitudin ligula ut, pharetra magna. Quisque faucibus id diam eu tempus. ', 1, 0),
+(2, 'Mohammad', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ipsum faucibus, sollicitudin ligula ut, pharetra magna. Quisque faucibus id diam eu tempus. ', 1, 1),
+(3, 'Timothé', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ipsum faucibus, sollicitudin ligula ut, pharetra magna. Quisque faucibus id diam eu tempus. ', 1, 0),
+(4, 'Arron', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ipsum faucibus, sollicitudin ligula ut, pharetra magna. Quisque faucibus id diam eu tempus. ', 3, 1),
+(5, 'Thomas', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ipsum faucibus, sollicitudin ligula ut, pharetra magna. Quisque faucibus id diam eu tempus. ', 1, 0),
+(6, 'Mathias', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ipsum faucibus, sollicitudin ligula ut, pharetra magna. Quisque faucibus id diam eu tempus. ', 1, 1),
+(7, 'Youmna', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ipsum faucibus, sollicitudin ligula ut, pharetra magna. Quisque faucibus id diam eu tempus. ', 1, 1),
+(8, 'Mammar', 'très bien', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -77,23 +78,23 @@ INSERT INTO `comments` (`id`, `name`, `comment`, `post_id`, `status`) VALUES
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
-  `title` varchar(191) COLLATE utf8_persian_ci NOT NULL,
+  `title` varchar(191) NOT NULL,
   `category_id` int(11) NOT NULL,
-  `body` text COLLATE utf8_persian_ci NOT NULL,
-  `author` varchar(191) COLLATE utf8_persian_ci NOT NULL,
-  `image` varchar(191) COLLATE utf8_persian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+  `body` text NOT NULL,
+  `author` varchar(191) NOT NULL,
+  `image` varchar(191) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `title`, `category_id`, `body`, `author`, `image`) VALUES
-(1, 'لورم ایپسوم 1', 2, '<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.\r\n', 'محمد مهرابی', '1.jpg'),
-(2, 'لورم ایپسوم 2', 1, '<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>\r\n', 'صادق محمدی', '2.jpg'),
-(3, 'لورم ایپسوم 3', 3, '<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>\r\n', 'علی شیخ', '3.jpg'),
-(4, 'لورم ایپسوم 4', 1, '<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>\r\n', 'نیما محمدی', '4.jpg'),
-(5, 'لورم ایپسوم 5', 3, '<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>\r\n', 'متین سیدی', '5.jpg');
+(1, 'Lorem ipsum 1', 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ipsum faucibus, sollicitudin ligula ut, pharetra magna. Quisque faucibus id diam eu tempus. Pellentesque augue lectus, bibendum non tellus et, finibus porttitor purus. Aenean auctor eget ante eget tristique. Duis dapibus tempus elit id rhoncus. Nunc sed urna eget odio pellentesque dictum sed eu purus. Suspendisse purus felis, vehicula sit amet convallis sed, semper nec quam. Sed rutrum sem sit amet lacus egestas accumsan. Fusce bibendum, lacus ac dignissim feugiat, felis massa varius leo, eu bibendum mauris dolor nec nisi.\r\n\r\nMaecenas vehicula id orci eget convallis. Aenean eu velit eu turpis congue scelerisque ac nec mi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla a pulvinar ante, nec accumsan metus. Donec vulputate facilisis ipsum, in porta lacus dapibus non. Praesent tempus sapien non dolor consectetur, ut imperdiet velit consequat. Fusce suscipit, nulla at ullamcorper mollis, massa orci tincidunt nisi, eu molestie lorem sem ac dolor. Aenean finibus libero quis ipsum mattis ullamcorper. Vivamus ex neque, ultricies at maximus in, imperdiet at velit. Pellentesque tortor purus, bibendum vitae ornare eget, feugiat imperdiet lacus. Cras pulvinar massa tortor, sed tristique leo faucibus a. Vestibulum varius dignissim congue. Maecenas a tortor eu quam elementum interdum eu sed orci. Duis eu ullamcorper justo.', 'Daniel Mohseni', '1.jpg'),
+(2, 'Lorem ipsum 2', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ipsum faucibus, sollicitudin ligula ut, pharetra magna. Quisque faucibus id diam eu tempus. Pellentesque augue lectus, bibendum non tellus et, finibus porttitor purus. Aenean auctor eget ante eget tristique. Duis dapibus tempus elit id rhoncus. Nunc sed urna eget odio pellentesque dictum sed eu purus. Suspendisse purus felis, vehicula sit amet convallis sed, semper nec quam. Sed rutrum sem sit amet lacus egestas accumsan. Fusce bibendum, lacus ac dignissim feugiat, felis massa varius leo, eu bibendum mauris dolor nec nisi.\r\n\r\nMaecenas vehicula id orci eget convallis. Aenean eu velit eu turpis congue scelerisque ac nec mi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla a pulvinar ante, nec accumsan metus. Donec vulputate facilisis ipsum, in porta lacus dapibus non. Praesent tempus sapien non dolor consectetur, ut imperdiet velit consequat. Fusce suscipit, nulla at ullamcorper mollis, massa orci tincidunt nisi, eu molestie lorem sem ac dolor. Aenean finibus libero quis ipsum mattis ullamcorper. Vivamus ex neque, ultricies at maximus in, imperdiet at velit. Pellentesque tortor purus, bibendum vitae ornare eget, feugiat imperdiet lacus. Cras pulvinar massa tortor, sed tristique leo faucibus a. Vestibulum varius dignissim congue. Maecenas a tortor eu quam elementum interdum eu sed orci. Duis eu ullamcorper justo.', 'Louis ', '2.jpg'),
+(3, 'Lorem ipsum 3', 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ipsum faucibus, sollicitudin ligula ut, pharetra magna. Quisque faucibus id diam eu tempus. Pellentesque augue lectus, bibendum non tellus et, finibus porttitor purus. Aenean auctor eget ante eget tristique. Duis dapibus tempus elit id rhoncus. Nunc sed urna eget odio pellentesque dictum sed eu purus. Suspendisse purus felis, vehicula sit amet convallis sed, semper nec quam. Sed rutrum sem sit amet lacus egestas accumsan. Fusce bibendum, lacus ac dignissim feugiat, felis massa varius leo, eu bibendum mauris dolor nec nisi.\r\n\r\nMaecenas vehicula id orci eget convallis. Aenean eu velit eu turpis congue scelerisque ac nec mi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla a pulvinar ante, nec accumsan metus. Donec vulputate facilisis ipsum, in porta lacus dapibus non. Praesent tempus sapien non dolor consectetur, ut imperdiet velit consequat. Fusce suscipit, nulla at ullamcorper mollis, massa orci tincidunt nisi, eu molestie lorem sem ac dolor. Aenean finibus libero quis ipsum mattis ullamcorper. Vivamus ex neque, ultricies at maximus in, imperdiet at velit. Pellentesque tortor purus, bibendum vitae ornare eget, feugiat imperdiet lacus. Cras pulvinar massa tortor, sed tristique leo faucibus a. Vestibulum varius dignissim congue. Maecenas a tortor eu quam elementum interdum eu sed orci. Duis eu ullamcorper justo.', 'Zach Galifianakis ', '3.jpg'),
+(4, 'Lorem ipsum 4', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ipsum faucibus, sollicitudin ligula ut, pharetra magna. Quisque faucibus id diam eu tempus. Pellentesque augue lectus, bibendum non tellus et, finibus porttitor purus. Aenean auctor eget ante eget tristique. Duis dapibus tempus elit id rhoncus. Nunc sed urna eget odio pellentesque dictum sed eu purus. Suspendisse purus felis, vehicula sit amet convallis sed, semper nec quam. Sed rutrum sem sit amet lacus egestas accumsan. Fusce bibendum, lacus ac dignissim feugiat, felis massa varius leo, eu bibendum mauris dolor nec nisi.\r\n\r\nMaecenas vehicula id orci eget convallis. Aenean eu velit eu turpis congue scelerisque ac nec mi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla a pulvinar ante, nec accumsan metus. Donec vulputate facilisis ipsum, in porta lacus dapibus non. Praesent tempus sapien non dolor consectetur, ut imperdiet velit consequat. Fusce suscipit, nulla at ullamcorper mollis, massa orci tincidunt nisi, eu molestie lorem sem ac dolor. Aenean finibus libero quis ipsum mattis ullamcorper. Vivamus ex neque, ultricies at maximus in, imperdiet at velit. Pellentesque tortor purus, bibendum vitae ornare eget, feugiat imperdiet lacus. Cras pulvinar massa tortor, sed tristique leo faucibus a. Vestibulum varius dignissim congue. Maecenas a tortor eu quam elementum interdum eu sed orci. Duis eu ullamcorper justo.', 'Henry Francheski', '4.jpg'),
+(5, 'Lorem ipsum 5', 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ipsum faucibus, sollicitudin ligula ut, pharetra magna. Quisque faucibus id diam eu tempus. Pellentesque augue lectus, bibendum non tellus et, finibus porttitor purus. Aenean auctor eget ante eget tristique. Duis dapibus tempus elit id rhoncus. Nunc sed urna eget odio pellentesque dictum sed eu purus. Suspendisse purus felis, vehicula sit amet convallis sed, semper nec quam. Sed rutrum sem sit amet lacus egestas accumsan. Fusce bibendum, lacus ac dignissim feugiat, felis massa varius leo, eu bibendum mauris dolor nec nisi.\r\n\r\nMaecenas vehicula id orci eget convallis. Aenean eu velit eu turpis congue scelerisque ac nec mi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla a pulvinar ante, nec accumsan metus. Donec vulputate facilisis ipsum, in porta lacus dapibus non. Praesent tempus sapien non dolor consectetur, ut imperdiet velit consequat. Fusce suscipit, nulla at ullamcorper mollis, massa orci tincidunt nisi, eu molestie lorem sem ac dolor. Aenean finibus libero quis ipsum mattis ullamcorper. Vivamus ex neque, ultricies at maximus in, imperdiet at velit. Pellentesque tortor purus, bibendum vitae ornare eget, feugiat imperdiet lacus. Cras pulvinar massa tortor, sed tristique leo faucibus a. Vestibulum varius dignissim congue. Maecenas a tortor eu quam elementum interdum eu sed orci. Duis eu ullamcorper justo.', 'David Larson', '5.jpg');
 
 -- --------------------------------------------------------
 
@@ -104,8 +105,8 @@ INSERT INTO `posts` (`id`, `title`, `category_id`, `body`, `author`, `image`) VA
 CREATE TABLE `posts_slider` (
   `id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+  `active` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `posts_slider`
@@ -124,9 +125,9 @@ INSERT INTO `posts_slider` (`id`, `post_id`, `active`) VALUES
 
 CREATE TABLE `subscribers` (
   `id` int(11) NOT NULL,
-  `name` varchar(191) COLLATE utf8_persian_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8_persian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+  `name` varchar(191) NOT NULL,
+  `email` varchar(191) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `subscribers`
@@ -134,7 +135,8 @@ CREATE TABLE `subscribers` (
 
 INSERT INTO `subscribers` (`id`, `name`, `email`) VALUES
 (1, 'sadegh', 'sadegh@gmail.com'),
-(2, 'ali', 'ali@gmail.com');
+(2, 'ali', 'ali@gmail.com'),
+(3, 'Mohammad MOHSENI', 'mami.maxim@gmail.come');
 
 -- --------------------------------------------------------
 
@@ -144,17 +146,17 @@ INSERT INTO `subscribers` (`id`, `name`, `email`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `email` varchar(255) COLLATE utf8_persian_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_persian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`) VALUES
-(1, 'navid@gmail.com', '123456'),
-(2, 'ali@gmail.com', '1234567');
+(3, 'mami.maxim@gmail.com', '$2y$10$UkC3/Jlsy66KssInUOpB5ug4W403s38P5CEVBXcrD/3Bchw35AVda'),
+(5, 'exemple@email.com', '$2y$10$NHPsthKieOOxcBVTyn6SeOxIEE3cuwI9p0shqtjVrxsKZs4guc8MG');
 
 --
 -- Indexes for dumped tables
@@ -207,53 +209,53 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `posts_slider`
 --
 ALTER TABLE `posts_slider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `categories`
+--
+ALTER TABLE `categories`
+  ADD CONSTRAINT `fk_post` FOREIGN KEY (`id`) REFERENCES `posts` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `posts`
---
-ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `posts_slider`
